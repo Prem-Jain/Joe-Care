@@ -1,0 +1,96 @@
+.formContainer{
+	border-radius: 5px;
+  background-color: #E8E8E8;
+  padding: 20px;
+  width: 50%;
+  margin: 0 auto;
+}
+* {
+  box-sizing: border-box;
+}
+input[type=email], input[type=password],input[type=text], input[type=number], input[type=tel], input[type=date], textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #42a5f5;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media(max-width: 1100px) {
+    .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+ }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.alert {
+	padding: 5px;
+	margin: 50px;
+	background-color: #f44336;
+	color: white;
+}
+
+.closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s; 
+}
+
+.closebtn:hover {
+	  color: black;
+}
+
+@media screen {
+  .formContainer
+ {
+  width: 100%;
+ } 
+}
