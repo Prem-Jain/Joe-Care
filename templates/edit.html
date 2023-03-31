@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Edit Profile</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="{{url_for('static', filename = 'stylesheets/nav.css') }}" media="screen">
+	<link rel="stylesheet" href="{{url_for('static', filename = 'stylesheets/footer.css') }}" media="screen">
+	<link rel="stylesheet" href="{{url_for('static', filename = 'stylesheets/form.css') }}" media="screen">
+	<link rel="icon" type="image/ico" href="{{url_for('static', filename = 'images/favicon.ico') }}">
+</head>
+	
+<body>
+	<header>
+<div class="wrapper">
+				<div class="logo">
+					<a href="/"><img src="{{url_for('static', filename = 'images/logo.png') }}" alt="Joe Care"></a>
+				</div>
+				<div class="navbar">
+					<div class="close-nav"><button>×</button></div>
+					<nav>
+						<ul>
+							<li><a href="/">Home</a></li>
+							<li><a href="/query">Queries</a></li>
+							<li><a href="/expert">Expert Advice</a></li>
+							<li><a href="#foot">Contact</a></li>
+							{% if logged == True %}
+
+							<li><a href = "/profile">Profile</a></li>
+							<li><a href = "/logout">Logout</a></li>
+
+							{% else %}
+							<li><a href = "/login">Login</a></li>
+							{% endif %}
+						</ul>
+					</nav>
+				</div>
+				<div class="menu-bar">
+					<button><i></i></button>
+				</div>
+			</div>
+		</header>
+		<script>
+			const theBody = document.querySelector('body');
+			const openNav = document.querySelector('.menu-bar button');
+			const closeNav = document.querySelector('.close-nav button');
+			const Navbar = document.querySelector('.navbar');
+	
+			// function bodyScroll(){
+			//     if(Navbar.classList.contains('show')){
+			//         theBody.classList.add('hide-scroll');
+			//     }
+			//     else if(theBody.classList.contains('hide-scroll')){
+			//         theBody.classList.remove('hide-scroll');
+			//     }
+			// }
+	
+			function showHide(){
+				Navbar.classList.toggle('show');
+				// bodyScroll();
+			}
+	
+			openNav.onclick = showHide;
+			closeNav.onclick = showHide;
+		</script>
+  {% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		{% for message in messages %}
+		<div class="alert">
+		  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+			<p align="center">{{ message }}</p>
+		</div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+	  {% if info %}
+	  <div class="alert">
+		  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+			<p align="center">{{ info }}</p>
+		</div>
+	  {% endif %}
+	<br>
+	<h1 style="text-align:center; color:#42a5f5">EDIT YOUR PROFILE</h1>
+<div style="padding: 2%">
+	<div class="formContainer" style="padding: 2%">
+		<form action="{{url_for('edit')}}" method="post">
+			<div class="row">
+				<div class="col-25">
+			<label for="name">Name</label>
+				</div>
+				<div class="col-75">
+			<input type="text" name="name" required value="{{name}}">
+				</div>
+			</div>
+			<div class="row">
+				<div class = "col-25">
+			<label for="dob">Date of Birth</label>
+				</div>
+				<div class = "col-75">
+			<input type="date" name="dob" required value="{{dob}}">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+			<label for="Address">Address</label>
+					</div>
+				<div class="col-75">
+			<input type="text" name="Address" required value="{{add}}">
+					</div>
+				</div>
+			<div class="row">
+			<div class="col-25">
+			<label for="phno">Phone Number</label>
+				</div>
+				<div class="col-75">
+			<input type="tel" name="phno" required pattern="[0-9]{10}" value="{{phno}}">
+					</div>
+				</div>
+			<div class="row">
+				<div class = "col-25">
+			<label for="user_email">Email</label>
+				</div>
+				<div class="col-75">
+			<input type="email" name="user_email" required value="{{email}}">
+					</div>
+				</div>
+			
+			<br>
+			<div class="row">
+			<input type="submit" name="submit">
+				</div>
+		</form>
+		</div>
+		
+	</div>
+	
+<footer id="foot">
+  <!-- Footer main -->
+  <section class="ft-main">
+    <div class="ft-main-item">
+        <h2 class="ft-title" style="color: #42a5f5;">Contact</h2>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/prem-jain801/" style="color: black">Prem</a></li>
+          <li><a href="https://www.linkedin.com/in/k-naga-himaja/" style="color: black">Himaja</a></li>
+          <li><a href="https://twitter.com/KNagaHimaja" style="color: black">Twitter</a></li>
+          <li><a href="https://www.instagram.com/prem_jain_801/" style="color: black">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="ft-main-item">
+        <h2 class="ft-title" style="color: #42a5f5;">Resources</h2>
+        <ul>
+          <li><a href="/" style="color: black">Home</a></li>
+          <li><a href="/query" style="color: black">Queries</a></li>
+          <li><a href="/expert" style="color: black">Expert Advice</a></li>
+          <li><a href="#foot" style="color: black">Contact</a></li>
+        </ul>
+      </div>
+    <div class="ft-main-item">
+      <h2 class="ft-title" style="color: #42a5f5;">About us</h2>
+      <ul style="color: black"> 
+        <p style="text-align: justify;">Prem and Himaja are G Pulla Reddy Engineering College students.</p>
+        <p style="text-align: justify;">Joe Care is designed to help men of all ages understand their bodies better.</p>
+        <p style="text-align: justify;">Our dear virtual friend, Joe Bot, is here in case you need any help. </p>
+        <p style="text-align: justify;">	We hope you have an educative tour on our page. Happy Learning!</p>
+      </ul>
+    </div>
+    
+  </section>
+
+  <!-- Footer legal -->
+  <section class="ft-legal">
+    <ul class="ft-legal-list">
+    </ul>
+  </section>
+</footer>
+	
+</body>
+</html>

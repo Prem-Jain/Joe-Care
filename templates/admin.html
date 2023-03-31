@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Admin Dash Board</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="{{url_for('static', filename = 'stylesheets/nav.css') }}" media="screen">
+	<link rel="stylesheet" href="{{url_for('static', filename = 'stylesheets/footer.css') }}" media="screen">
+	<link rel="stylesheet" href="{{url_for('static', filename = 'stylesheets/form.css') }}" media="screen">
+	<link rel="icon" type="image/ico" href="{{url_for('static', filename = 'images/favicon.ico') }}">
+</head>
+
+	
+<body>
+	
+	<header>
+			<div class="wrapper">
+				<div class="logo">
+					<a href="/"><img src="{{url_for('static', filename = 'images/logo.png') }}" alt="Joe Care"></a>
+				</div>
+				<div class="navbar">
+					<div class="close-nav"><button>×</button></div>
+					<nav>
+						<ul>
+							<li><a href="/">Home</a></li>
+							<li><a href="/query">Queries</a></li>
+							<li><a href="/expert">Expert Advice</a></li>
+							<li><a href="#foot">Contact</a></li>
+							{% if logged == True %}
+
+							<li><a href = "/profile">Profile</a></li>
+							<li><a href = "/logout">Logout</a></li>
+
+							{% else %}
+							<li><a href = "/login">Login</a></li>
+							{% endif %}
+						</ul>
+					</nav>
+				</div>
+				<div class="menu-bar">
+					<button><i></i></button>
+				</div>
+			</div>
+		</header>
+
+		<script>
+			const theBody = document.querySelector('body');
+			const openNav = document.querySelector('.menu-bar button');
+			const closeNav = document.querySelector('.close-nav button');
+			const Navbar = document.querySelector('.navbar');
+	
+			// function bodyScroll(){
+			//     if(Navbar.classList.contains('show')){
+			//         theBody.classList.add('hide-scroll');
+			//     }
+			//     else if(theBody.classList.contains('hide-scroll')){
+			//         theBody.classList.remove('hide-scroll');
+			//     }
+			// }
+	
+			function showHide(){
+				Navbar.classList.toggle('show');
+				// bodyScroll();
+			}
+	
+			openNav.onclick = showHide;
+			closeNav.onclick = showHide;
+		</script>
+	
+	
+	
+	<br><br>
+	<h1 style="text-align: center">Post Moderation</h1>
+	
+	
+	<br>	
+	
+	<div class="formContainer" style="padding: 0% 2%">
+	{% for record in records%}
+	<form action="{{url_for('approve', postid=record[0])}}" method="post">
+		<div class="row">
+			<div class="col-25">
+		<label for="name">Title</label>
+			</div>
+			<div class="col-75">
+		<input type="text" value="{{record[2]}}" readonly>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-25">
+		<label for="class">Description</label>
+			</div>
+			<div class="col-75">
+		<input type="text" value="{{record[3]}}" readonly>
+				</div>
+			</div>
+		<div class="row">
+			<div class="col-25">
+		<label for="fatherName">Anonymous?</label>
+				</div>
+			<div class="col-75">
+		<input type="text" value="{{record[4]}}" readonly>
+				</div>
+			</div>
+		<div class="row">
+			<div class="col-25">
+		<label for="motherName">Name</label>
+				</div>
+			<div class="col-75">
+		<input type="text" value="{{record[5]}}" readonly>
+				</div>
+			</div>
+		<div class="row">
+			<div class="col-25">
+		<label for="Address">email</label>
+				</div>
+			<div class="col-75">
+		<input type="text" value="{{record[6]}}" readonly>
+				</div>
+			</div>
+		<div class="row">
+			<div class="col-25">
+		<label for="Mobile">Age</label>
+				</div>
+			<div class="col-75">
+		<input type="number" value="{{record[7]}}" readonly>
+				</div>
+			</div>
+		<div class="row">
+				<div class = "col-25">
+				</div>
+				<div class = "col-75">
+					<input type="checkbox" id="ageres" name="ageres" value="True">
+					<label for="vehicle1">Is it age restrictive?</label>
+				</div>
+			</div>
+		<br>
+			<div class="row">
+			<input type="submit" name="submit">
+				</div>
+	</form>
+		
+			<br>
+		<div class="row">	
+	<a href="{{url_for('disapprove', postid=record[0])}}"><button style="background-color: #FF4433; color: white; border-radius: 5px; border-color: beige;">Do Not Approve</button></a>
+	</div>
+		<br>
+		<hr>
+		
+		{% else %}
+		<br>
+		<p style="text-align: center">No Posts here</p>
+		<br>	
+		
+	{% endfor %}
+	
+	
+	</div>
+	<br>
+	<br>
+	<h1 style="text-align: center">Expert Request</h1>
+	 <br>
+	<div class="formContainer">
+		{% for record in req%}	
+	<form action="{{url_for('reqdone', reqid=record[0])}}" method="post">
+		<div class="row">
+			<div class="col-25">
+		<label for="name">name</label>
+			</div>
+			<div class="col-75">
+		<input type="text" value="{{record[2]}}" readonly>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-25">
+		<label for="class">Email</label>
+			</div>
+			<div class="col-75">
+		<input type="text" value="{{record[3]}}" readonly>
+				</div>
+			</div>
+		<div class="row">
+			<div class="col-25">
+		<label for="fatherName">Phone Number</label>
+				</div>
+			<div class="col-75">
+		<input type="text" value="{{record[4]}}" readonly>
+				</div>
+			</div>
+		<div class="row">
+			<div class="col-25">
+		<label for="motherName">Please tell us abput the problem you are facing</label>
+				</div>
+			<div class="col-75">
+		<input type="text" value="{{record[5]}}" readonly>
+				</div>
+			</div>
+		<div class="row">
+			<div class="col-25">
+		<label for="Address">Please brief your medical history</label>
+				</div>
+			<div class="col-75">
+		<input type="text" value="{{record[6]}}" readonly>
+				</div>
+			</div>
+		<div class="row">
+				<div class = "col-25">
+				</div>
+				<div class = "col-75">
+					<input type="checkbox" id="done" name="done" value="True">
+					<label for="done">Request Completed?</label>
+				</div>
+			</div>
+		<br>
+			<div class="row">
+			<input type="submit" name="submit">
+				</div>
+	</form>
+		<hr>
+		{% else %}
+		<p style="text-align: center">No Requests here</p>
+		
+	{% endfor %}
+	</div>
+	
+	<div class="container"></div>
+<footer id="foot">
+  <!-- Footer main -->
+  <section class="ft-main">
+    <div class="ft-main-item">
+        <h2 class="ft-title" style="color: #42a5f5;">Contact</h2>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/prem-jain801/" style="color: black">Prem</a></li>
+          <li><a href="https://www.linkedin.com/in/k-naga-himaja/" style="color: black">Himaja</a></li>
+          <li><a href="https://twitter.com/KNagaHimaja" style="color: black">Twitter</a></li>
+          <li><a href="https://www.instagram.com/prem_jain_801/" style="color: black">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="ft-main-item">
+        <h2 class="ft-title" style="color: #42a5f5;">Resources</h2>
+        <ul>
+         <li><a href="/" style="color: black">Home</a></li>
+         <li><a href="/query" style="color: black">Queries</a></li>
+         <li><a href="/expert" style="color: black">Expert Advice</a></li>
+         <li><a href="#foot" style="color: black">Contact</a></li>
+        </ul>
+      </div>
+    <div class="ft-main-item">
+      <h2 class="ft-title" style="color: #42a5f5;">About us</h2>
+      <ul style="color: black"> 
+        <p style="text-align: justify;">Prem and Himaja are G Pulla Reddy Engineering College students.</p>
+        <p style="text-align: justify;">Joe Care is designed to help men of all ages understand their bodies better.</p>
+        <p style="text-align: justify;">Our dear virtual friend, Joe Bot, is here in case you need any help. </p>
+        <p style="text-align: justify;">	We hope you have an educative tour on our page. Happy Learning!</p>
+      </ul>
+    </div>
+    
+  </section>
+
+  <!-- Footer legal -->
+  <section class="ft-legal">
+    <ul class="ft-legal-list">
+    </ul>
+  </section>
+</footer>
+	
+</body>
+</html>
