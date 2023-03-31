@@ -5,40 +5,55 @@ Joe Care is your go-to platform for any information related to sexual health and
 Our virtual buddy - Joe, the Bot, is here to help you with your questions. Joe is our little friend constantly learning and trying to better himself! You can post your questions and experience for the other users to read and answer. You can contact experts to get your questions answered. For further details, check our profiles on the contact page!
 
 ## Description
-This is a Flask app that demonstrates how to create a basic web application with Flask.
+Joe Care is a Flask app. Below instructions demonstrates how to run this web application with Flask.
 
-Installation
+## Installation
 Clone the repository to your local machine using the command:
-bash
-git clone https://github.com/Prem-Jain/Joe-Care.git
-bash
-Copy code
-cd flask-app
-Create a virtual environment:
-Copy code
-python3 -m venv venv
-Activate the virtual environment:
-bash
+```console
+$ git clone https://github.com/Prem-Jain/Joe-Care.git
+```
 
-source venv/bin/activate
-Install the required packages:
+```console
+$ cd Joe-Care
+```
 
-pip install -r requirements.txt
-Set the FLASK_APP environment variable:
+### Create a virtual environment:
+```console
+$ python3 -m venv venv
+```
+### Activate the virtual environment:
+```console
+$ source venv/bin/activate
+```
+
+### Install the required packages:
+```console
+$ pip install -r requirements.txt
+
+```
+
+### Set the FLASK_APP environment variable:
+```console
+$ export FLASK_APP=app.py
+```
 
 Usage
 Run the Flask app:
-arduino
-Copy code
-flask run
+```console
+$ flask run
+
+```
+or Open the app.py file in your editor like Spyder or PyCharm and run it.
+
 Open your web browser and navigate to the following URL:
+```console
 http://localhost:5000/
+```
+or 
+```console
+http:127.0.0.1:5000/
+```
+
 You should now see the home page of the Flask app.
-Credits
-This app was created by [Your Name]. If you have any questions or suggestions, please feel free to contact me at [Your Email Address].
-
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Acknowledgements
-Thank you to the Flask community for creating such a great web framework.
+## Credits
+This app was created by J Prem and K Naga Himaja. If you have any questions or suggestions, please feel free to contact me at premj801@gmail.com or himajakeela18@gmail.com .
