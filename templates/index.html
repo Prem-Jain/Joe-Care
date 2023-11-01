@@ -24,7 +24,7 @@
 							<li><a href="/query">Queries</a></li>
 							<li><a href="/expert">Expert Advice</a></li>
 							<li><a href="#foot">Contact</a></li>
-							{% if logged == True %}
+							{% if current_user.is_active %}
 
 							<li><a href = "/profile">Profile</a></li>
 							<li><a href = "/logout">Logout</a></li>
@@ -167,7 +167,6 @@
 <df-messenger
   intent="WELCOME"
   chat-title="Joe, the Bot"
-  chat-icon="https://e7.pngegg.com/pngimages/498/917/png-clipart-computer-icons-desktop-chatbot-icon-blue-angle.png"	
   agent-id="7b2d573f-3da1-4330-9b75-c3e329ff22dc" language-code="en">
 </df-messenger>
 	

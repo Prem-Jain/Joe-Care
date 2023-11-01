@@ -23,7 +23,7 @@
 							<li><a href="/query">Queries</a></li>
 							<li><a href="/expert">Expert Advice</a></li>
 							<li><a href="#foot">Contact</a></li>
-							{% if logged == True %}
+							{% if current_user.is_active %}
 
 							<li><a href = "/profile">Profile</a></li>
 							<li><a href = "/logout">Logout</a></li>
